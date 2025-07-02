@@ -6,7 +6,7 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
-		"lint": "tsc --noEmit -p tsconfig.json",
+		"lint": "tsc --noEmit -p tsconfig.lint.json",
 		"format": "bun run lint && biome format --write && biome lint --write"
 	},
 	"dependencies": {
