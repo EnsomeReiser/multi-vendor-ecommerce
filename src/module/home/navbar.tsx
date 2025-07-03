@@ -28,10 +28,12 @@ const NavbarItem = ({ href, children, isActive }: NavbarItemProps) => {
 				"rounded-full border-transparent bg-transparent px-3.5 text-lg hover:border-primary hover:bg-transparent",
 				isActive && "bg-black text-white hover:bg-black hover:text-white",
 			)}
+			asChild
 		>
 			<Link href={href}>{children}</Link>
 		</Button>
 	);
+};
 };
 
 const navbarItems = [
