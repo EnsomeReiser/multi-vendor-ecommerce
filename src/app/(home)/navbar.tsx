@@ -1,8 +1,11 @@
 "use client";
 
+import { MenuIcon } from "lucide-react";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { NavbarSidebar } from "@/app/(home)/navbar-sidebar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -41,6 +44,7 @@ const navbarItems = [
 
 export const Navbar = () => {
 	const pathname = usePathname();
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
 	return (
 		<nav className="flex h-20 justify-between border-b bg-white font-medium">
@@ -49,6 +53,11 @@ export const Navbar = () => {
 					vcom
 				</span>
 			</Link>
+			<NavbarSidebar
+				items={navbarItems}
+				open={isSidebarOpen}
+				onOpenChange={setIsSidebarOpen}
+			/>
 
 			<div className="hidden items-center gap-4 lg:flex">
 				{navbarItems.map((item) => (
@@ -73,6 +82,16 @@ export const Navbar = () => {
 					asChild
 				>
 					<Link href="/sign-up">Start selling</Link>
+				</Button>
+			</div>
+
+			<div className="flex items-center justify-center lg:hidden">
+				<Button
+					variant="ghost"
+					className="size-12 border-transparent bg-white"
+					onClick={() => setIsSidebarOpen(true)}
+				>
+					<MenuIcon />
 				</Button>
 			</div>
 		</nav>
